@@ -71,6 +71,8 @@ choco install oh-my-posh          --limit-output
 choco install fastfetch           --limit-output
 choco install bottom              --limit-output
 choco install bruno               --limit-output
+choco install quicklook               --limit-output
+choco install localsend --limit-output
 
 Refresh-Environment
 
