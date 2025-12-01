@@ -10,8 +10,8 @@ ${function:......} = { Set-Location ..\..\..\..\.. }
 # Navigation Shortcuts
 ${function:docs} = { Set-Location ~\Documents }
 ${function:dl} = { Set-Location ~\Downloads }
-${function:dp} = { Set-Location C:\SnappCar\ }
-${function:dt} = { Set-Location C:\SnappCar\dotnet }
+${function:dp} = { Set-Location "$(if ($env:SNAPPCAR_DRIVE) { $env:SNAPPCAR_DRIVE } else { 'C:' })\SnappCar\" }
+${function:dt} = { Set-Location "$(if ($env:SNAPPCAR_DRIVE) { $env:SNAPPCAR_DRIVE } else { 'C:' })\SnappCar\dotnet" }
 
 # Missing Bash aliases
 Set-Alias time Measure-Command
