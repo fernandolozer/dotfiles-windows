@@ -72,8 +72,9 @@ choco install fastfetch           --limit-output
 choco install bottom              --limit-output
 choco install bruno               --limit-output
 choco install quicklook               --limit-output
-choco install localsend --limit-output
-
+choco install localsend             --limit-output
+choco install gh                    --limit-output
+choco install sumatrapdf            --limit-output
 Refresh-Environment
 
 # set up oh-my-posh

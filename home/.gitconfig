@@ -40,6 +40,8 @@
     dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
     # Undo Commit; leaves files. Only for non-public commits
     uncommit = reset --soft HEAD^
+    # create a GitHub pull request in the web browser
+    pr = "!gh pr create --web --fill"
 
 [apply]
     # Detect whitespace errors when applying a patch
