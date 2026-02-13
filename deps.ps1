@@ -49,7 +49,7 @@ choco install cascadiafonts       --limit-output
 # browsers
 choco install GoogleChrome        --limit-output; <# pin; evergreen #> choco pin add --name GoogleChrome        --limit-output
 choco install Firefox             --limit-output; <# pin; evergreen #> choco pin add --name Firefox             --limit-output
-choco install slack               --limit-output; 
+choco install slack               --limit-output;
 choco install whatsapp            --limit-output;
 choco install brave               --limit-output;
 
@@ -76,6 +76,10 @@ choco install localsend             --limit-output
 choco install gh                    --limit-output
 choco install sumatrapdf            --limit-output
 Refresh-Environment
+
+# Install and configure Komorebi
+Write-Host "Installing Komorebi..." -ForegroundColor "Yellow"
+& "$PSScriptRoot\komorebi-install.ps1"
 
 # set up oh-my-posh
 oh-my-posh font install meslo
@@ -144,6 +148,5 @@ if ((which curl) -and (which vim) -and (which rake) -and (which bash)) {
 }
 
 ### open links for things that needs download
-start 'https://visualstudio.microsoft.com/' 
-start 'https://www.microsoft.com/pt-br/sql-server/sql-server-downloads' 
-
+start 'https://visualstudio.microsoft.com/'
+start 'https://www.microsoft.com/pt-br/sql-server/sql-server-downloads'
