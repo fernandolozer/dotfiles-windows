@@ -2,8 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.38/schema.json",
   "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
   "bar_configurations": [
-    "C:/Users/Fernando/komorebi.bar.vertical.json",
-    "C:/Users/Fernando/komorebi.bar.main.json"
+    "C:/Users/Fernando/.config/komorebi/komorebi.bar.vertical.json",
+    "C:/Users/Fernando/.config/komorebi/komorebi.bar.main.json"
   ],
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
