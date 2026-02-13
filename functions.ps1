@@ -16,6 +16,15 @@ function sudo() {
     }
 }
 
+# Webstorm shortcut
+function ws () {
+    param(
+        [string]$path = "."
+    )
+
+    & "C:\Program Files\JetBrains\WebStorm\bin\webstorm64.exe" $path
+}
+
 # System Update - Update RubyGems, NPM, and their installed packages
 function System-Update() {
     Install-WindowsUpdate -IgnoreUserInput -IgnoreReboot -AcceptAll

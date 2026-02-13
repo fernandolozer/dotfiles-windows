@@ -2,7 +2,7 @@
 # ===========
 
 Push-Location (Split-Path -parent $profile)
-"components-shell" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
+"components-shell", "functions" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
 Pop-Location
 
 oh-my-posh init pwsh | Invoke-Expression
