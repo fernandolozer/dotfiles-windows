@@ -15,5 +15,11 @@ Copy-Item -Path "./home/fastfetch.config.jsonc" -Destination "$destDir/config.js
 
 Copy-Item -Path ./nvim/** -Destination $home/.config/nvim -Recurse -Force
 
+# copy yazi folder to %appData%/yazi/config
+$yaziDestDir = Join-Path $env:APPDATA "\yazi\config"
+New-Item -ItemType Directory -Path $yaziDestDir -Force | Out-Null
+
+Copy-Item -Path ./yazi/** -Destination $yaziDestDir -Recurse -Force
+
 Remove-Variable componentDir
 Remove-Variable profileDir

@@ -7,4 +7,4 @@ Pop-Location
 
 oh-my-posh init pwsh | Invoke-Expression
 
-fastfetch --logo Windows
+# fastfetch --logo Windows

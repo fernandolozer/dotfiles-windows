@@ -75,6 +75,9 @@ choco install quicklook               --limit-output
 choco install localsend             --limit-output
 choco install gh                    --limit-output
 choco install sumatrapdf            --limit-output
+choco install ffmpeg
+choco install 7zip
+
 Refresh-Environment
 
 # Install and configure Komorebi
@@ -90,6 +93,8 @@ oh-my-posh font install meslo
 #                 "face": "MesloLGM Nerd Font"
 #             }
 #         },
+
+ya pkg add yazi-rs/flavors:dracula
 
 nvm on
 $nodeLtsVersion = choco search nodejs-lts --limit-output | ConvertFrom-String -TemplateContent "{Name:package-name}\|{Version:1.11.1}" | Select -ExpandProperty "Version"

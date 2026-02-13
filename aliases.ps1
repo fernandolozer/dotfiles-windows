@@ -13,15 +13,6 @@ ${function:dl} = { Set-Location ~\Downloads }
 ${function:dp} = { Set-Location "$(if ($env:SNAPPCAR_DRIVE) { $env:SNAPPCAR_DRIVE } else { 'C:' })\SnappCar\" }
 ${function:dt} = { Set-Location "$(if ($env:SNAPPCAR_DRIVE) { $env:SNAPPCAR_DRIVE } else { 'C:' })\SnappCar\dotnet" }
 
-# Missing Bash aliases
-Set-Alias time Measure-Command
-
-# Correct PowerShell Aliases if tools are available (aliases win if set)
-# WGet: Use `wget.exe` if available
-if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path) {
-  rm alias:wget -ErrorAction SilentlyContinue
-}
-
 # Directory Listing: Use `ls.exe` if available
 if (Get-Command ls.exe -ErrorAction SilentlyContinue | Test-Path) {
     rm alias:ls -ErrorAction SilentlyContinue
@@ -57,12 +48,6 @@ Set-Alias mkd CreateAndSet-Directory
 
 # Determine size of a file or total size of a directory
 Set-Alias fs Get-DiskUsage
-
-# Empty the Recycle Bin on all drives
-Set-Alias emptytrash Empty-RecycleBin
-
-# Cleanup old files all drives
-Set-Alias cleandisks Clean-Disks
 
 # Reload the shell
 Set-Alias reload Reload-Powershell
