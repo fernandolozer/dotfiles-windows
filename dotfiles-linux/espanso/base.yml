@@ -1,0 +1,81 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  - trigger: ",,tag"
+    replace: "git push; git tag test HEAD --force; git push origin test --force; start https://wjenkins.snappcar.nl/view/1.TEST/job/2-tst1-deploy/build?delay=0sec"
+
+  - trigger: "gcb"
+    replace: "git checkout -b "
+
+  - trigger: "gcp"
+    replace: "git checkout main; git pull;"
+
+  - trigger: ",,pull"
+    replace: "git checkout main; git pull;"
+
+  - trigger: "gmm"
+    replace: "git fetch; git merge origin/main;"
+
+  - trigger: ",,merge"
+    replace: "git fetch; git merge origin/main;"
+
+  - trigger: "fll"
+    replace: "flichtenheld@gmail.com"
+
+  - trigger: "fl1"
+    replace: "Fernando Lozer Lichtenheld"
+
+  - trigger: "addr1"
+    replace: "Rua Urophyla, 75, Coqueiral, Aracruz"
+
+  - trigger: ",,guid"
+    replace: "new Guid(\"$|$\")"
+
+  - trigger: "(("
+    replace: "(x => x.$|$)"
+
+  - trigger: "gr "
+    replace: "https://github.com/SnappCar?q=$|$&type=all&language=&sort="
+
+  - trigger: ",,clone"
+    replace: "git clone git@github.com:SnappCar/{{form1.service}}.git; cd {{form1.service}}; npm i; code . ;"
+    vars:
+      - name: "form1"
+        type: form
+        params:
+          layout: "Enter Service [[service]]"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
