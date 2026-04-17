@@ -75,5 +75,23 @@ else
     echo "Source line already present in $ZSHRC"
 fi
 
+# configure headphones to work everytime.
+mkdir -p ~/.config/wireplumber/main.lua.d/
+touch ~/.config/wireplumber/main.lua.d/99-headphones-profile.lua
+cat > ~/.config/wireplumber/main.lua.d/99-headphones-profile.lua << 'EOF'
+rule = {
+  matches = {
+    {
+      { "device.name", "=", "alsa_card.pci-0000_00_1f.3-platform-skl_hda_dsp_generic" },
+    },
+  },
+  apply_properties = {
+    ["device.profile"] = "HiFi (HDMI1, HDMI2, HDMI3, Headphones, Mic1, Mic2)",
+  },
+}
+
+table.insert(alsa_monitor.rules, rule)
+EOF
+
 echo ""
 echo "Bootstrap complete."
