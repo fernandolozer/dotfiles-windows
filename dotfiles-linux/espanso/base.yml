@@ -8,12 +8,8 @@
 # Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
-
   - trigger: ",,tag"
-    replace: "git push; git tag test HEAD --force; git push origin test --force; start https://wjenkins.snappcar.nl/view/1.TEST/job/2-tst1-deploy/build?delay=0sec"
+    replace: "git push; git tag test HEAD --force; git push origin test --force; echo -e '\n\n\nNow Just open the browser with \n\n https://wjenkins.snappcar.nl/view/1.TEST/job/2-tst1-deploy/build?delay=0sec ' "
 
   - trigger: "gcb"
     replace: "git checkout -b "
@@ -40,24 +36,33 @@ matches:
     replace: "Rua Urophyla, 75, Coqueiral, Aracruz"
 
   - trigger: ",,guid"
-    replace: "new Guid(\"$|$\")"
+    replace: 'new Guid("$|$")'
 
   - trigger: "(("
     replace: "(x => x.$|$)"
+
+  - trigger: ",,ip"
+    replace: "curl api.ipify.org"
 
   - trigger: "gr "
     replace: "https://github.com/SnappCar?q=$|$&type=all&language=&sort="
 
   - trigger: ",,clone"
-    replace: "git clone git@github.com:SnappCar/{{form1.service}}.git; cd {{form1.service}}; npm i; code . ;"
+    replace: "git clone git@github.com:SnappCar/{{form1.service}}.git; cd {{form1.service}}; npm i; zed . ;"
     vars:
       - name: "form1"
         type: form
         params:
           layout: "Enter Service [[service]]"
 
-  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+  - trigger: ",,tocsv"
+    replace: |
+      // Converts your collection into a CSV-formatted string
+      string csv = Util.ToCsvString(myList);
 
+      // Save it to your drive
+      File.WriteAllText(@"C:\temp\myExport.csv", csv);
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
   # But matches can also be dynamic:
 
   # Print the current date

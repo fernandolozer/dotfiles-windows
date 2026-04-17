@@ -84,6 +84,9 @@ try "Joplin COPR" \
 section "DNF packages"
 
 # Core CLI tools — install as a group; if this fails something is very wrong
+# Add extra repository
+sudo dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+
 sudo dnf install -y \
     curl \
     git \
@@ -108,12 +111,10 @@ sudo dnf install -y \
     flatpak
 
 # GUI apps — each optional; a missing repo from above won't break these others
-for pkg in firefox brave-browser celluloid bottles flatseal joplin; do
+for pkg in brave-browser celluloid bottles flatseal joplin; do
     try "$pkg" sudo dnf install -y "$pkg"
 done
 
-
-sudo dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 sudo dnf install -y espanso-wayland
 espanso service register
 espanso start
@@ -121,9 +122,6 @@ espanso start
 # ── Direct RPM downloads ──────────────────────────────────────────────────────
 
 section "Direct RPM installs"
-
-try_if_missing "GitKraken" gitkraken \
-    sudo dnf install -y https://release.gitkraken.com/linux/gitkraken-amd64.rpm
 
 try_if_missing "Obsidian" obsidian \
     install_github_rpm "obsidianmd/obsidian-releases" "x86_64.rpm"
@@ -173,7 +171,6 @@ else
 fi
 
 # ── nvm + Node ────────────────────────────────────────────────────────────────
-
 section "nvm + Node"
 
 try_if_missing "nvm install" nvm \

@@ -26,6 +26,10 @@ link "$DOTFILES_DIR/home/.gitattributes"          "$HOME/.gitattributes"
 link "$DOTFILES_DIR/home/.npmrc"                  "$HOME/.npmrc"
 link "$DOTFILES_DIR/home/.gemrc"                  "$HOME/.gemrc"
 
+### Espanso
+echo 'Linking espanso base file'
+link "$DOTFILES_DIR/espanso/base.yml"                  "$HOME/.config/espanso/match/base.yml"
+
 ### fastfetch
 echo "Linking fastfetch config..."
 mkdir -p "$HOME/.config/fastfetch"

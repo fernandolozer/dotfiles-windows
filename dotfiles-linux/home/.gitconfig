@@ -55,6 +55,7 @@
     whitespace = space-before-tab,tab-in-indent,trailing-space,tabwidth=4
     # Speed up commands involving untracked files such as `git status`
     untrackedCache = true
+	autocrlf = input
 
 [color]
     ui = auto
