@@ -173,10 +173,14 @@ fi
 # ── nvm + Node ────────────────────────────────────────────────────────────────
 section "nvm + Node"
 
-try_if_missing "nvm install" nvm \
-    bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash'
+# nvm is a shell function, not a binary — check for the directory instead
+if [ ! -d "$HOME/.nvm" ]; then
+    try "nvm install" bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash'
+fi
 
 export NVM_DIR="$HOME/.nvm"
+# nvm.sh references variables unset in non-interactive scripts; suspend -u around it
+set +u
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 if command -v nvm &>/dev/null; then
@@ -187,6 +191,7 @@ else
     echo "  ✗ nvm not available in current shell — run 'nvm install --lts' after restarting"
     FAILED_STEPS+=("Node LTS — run manually: nvm install --lts")
 fi
+set -u
 
 # ── Ruby gems ─────────────────────────────────────────────────────────────────
 
@@ -197,6 +202,18 @@ try "gem update" gem update --system
 
 section "Yazi"
 try "Yazi Dracula flavor" ya pkg add --force yazi-rs/flavors:dracula
+
+# ── Kanata ───────────────────────────────────────────────────────────────────
+
+section "Kanata"
+try_if_missing "kanata" kanata sudo dnf install -y kanata
+
+try "uinput group" sudo groupadd -f uinput
+try "Add $USER to input group"  sudo usermod -aG input  "$USER"
+try "Add $USER to uinput group" sudo usermod -aG uinput "$USER"
+try "uinput udev rule" bash -c 'echo "KERNEL==\"uinput\", MODE=\"0660\", GROUP=\"uinput\", OPTIONS+=\"static_node=uinput\"" | sudo tee /etc/udev/rules.d/99-uinput.rules > /dev/null'
+try "reload udev rules" sudo udevadm control --reload-rules
+try "trigger udev"     sudo udevadm trigger
 
 # ── SSH key ───────────────────────────────────────────────────────────────────
 

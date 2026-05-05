@@ -93,5 +93,15 @@ rule = {
 table.insert(alsa_monitor.rules, rule)
 EOF
 
+### Kanata
+echo "Linking kanata config..."
+mkdir -p "$HOME/.config/kanata"
+link "$DOTFILES_DIR/kanata/kanata.kbd"     "$HOME/.config/kanata/kanata.kbd"
+mkdir -p "$HOME/.config/systemd/user"
+link "$DOTFILES_DIR/kanata/kanata.service" "$HOME/.config/systemd/user/kanata.service"
+systemctl --user daemon-reload
+systemctl --user enable --now kanata \
+    || echo "  Note: kanata service could not start — log out and back in for group changes to take effect, then run: systemctl --user enable --now kanata"
+
 echo ""
 echo "Bootstrap complete."
