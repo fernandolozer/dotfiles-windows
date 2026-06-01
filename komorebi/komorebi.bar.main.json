@@ -4,7 +4,7 @@
   "font_family": "JetBrains Mono",
   "theme": {
     "palette": "Base16",
-    "name": "Ashes",
+    "name": "Onedark",
     "accent": "Base0D"
   },
   "left_widgets": [
@@ -61,7 +61,7 @@
     {
       "Time": {
         "enable": true,
-        "format": "TwentyFourHour"
+        "format": "TwentyFourHourWithoutSeconds"
       }
     },
     {

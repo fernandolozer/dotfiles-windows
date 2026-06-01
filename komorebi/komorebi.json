@@ -15,7 +15,7 @@
   "border_style": "Square",
   "theme": {
     "palette": "Base16",
-    "name": "Ashes",
+    "name": "Onedark",
     "unfocused_border": "Base03",
     "bar_accent": "Base0D"
   },
